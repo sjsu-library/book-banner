@@ -116,7 +116,7 @@ arithmeticagent_system_prompt = SystemMessage(
     """
 )
 
-debug_yn = False
+debug_yn = True
 debug_yn = st.checkbox("Debug")
 arithmeticagent_graph = create_react_agent(
     model = model,
@@ -125,7 +125,7 @@ arithmeticagent_graph = create_react_agent(
     debug = debug_yn)
 
 
-detailed_yn = False
+detailed_yn = True
 detailed_yn = st.checkbox("Detailed output")
 if prompt := st.chat_input("Enter a simple mathematics question"): # if input has a value
     with st.chat_message("user"):         # set the role as user
