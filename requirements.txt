@@ -1,7 +1,6 @@
 langchain_core
 langchain-openai
 langchain-google-genai
-langraph
 langgraph-prebuilt
 pinecone
 streamlit
