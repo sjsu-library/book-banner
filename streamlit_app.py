@@ -13,7 +13,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import os
-from getandrun_query import getandrun
 from pc_query import pinecone_query
 import streamlit as st
 
@@ -53,17 +52,6 @@ def division(x:int, y:int) -> int :
     It takes two integers as its inputs and the output is an integer.
     """
     return x / y
-
-# database query tool
-@tool
-def db_query(natural_language_query):
-    """
-    This function takes a natural language text query and runs it against an
-    employee table in a database and returns the result. 
-    It takes a string as input and returns a list object. 
-    """
-    response = getandrun(natural_language_query)
-    return response
 
 # index query tool
 @tool
