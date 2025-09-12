@@ -14,7 +14,7 @@ from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import os
 import streamlit as st
-import pyalex
+from pyalex import Works
 
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
