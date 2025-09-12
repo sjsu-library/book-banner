@@ -2,5 +2,5 @@ langchain_core
 langchain-openai
 langchain-google-genai
 langgraph-prebuilt
-pc_query
+pinecone
 streamlit
