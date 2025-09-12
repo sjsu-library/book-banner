@@ -1,4 +1,4 @@
-langchain_core-tools
+langchain_core
 langchain-openai
 langchain-google-genai
 langgraph-prebuilt
