@@ -1,1 +1,8 @@
-
+langchain_core-tools
+langchain-openai
+langgraph-prebuilt
+langchain_core-messages
+os
+getandrun_query
+pc_query
+streamlit
