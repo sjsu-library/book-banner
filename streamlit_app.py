@@ -94,7 +94,7 @@ for message in st.session_state.messages:
 #    print(response.content)
 
 # Tool list
-arithmeticagent_tools = [addition, subtraction, multiplication, division, db_query, index_query]
+arithmeticagent_tools = [addition, subtraction, multiplication, division]
 
 arithmeticagent_system_prompt = SystemMessage(
     """You are a math agent that can solve simple mathematics problems like addition, subtraction, multiplication and division. 
