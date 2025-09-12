@@ -1,5 +1,6 @@
 langchain_core-tools
 langchain-openai
+langchain-google-genai
 langgraph-prebuilt
 langchain_core-messages
 os
