@@ -13,7 +13,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import os
-from pc_query import pinecone_query
 import streamlit as st
 
 # addition tool
@@ -52,17 +51,6 @@ def division(x:int, y:int) -> int :
     It takes two integers as its inputs and the output is an integer.
     """
     return x / y
-
-# index query tool
-@tool
-def index_query(natural_language_query):
-    """
-    This function takes a natural language text query and runs it against an
-    and index that has information about Vijai Gandikota and returns the result.
-    It takes a string as input and returns a string object. 
-    """
-    response = pinecone_query(natural_language_query)
-    return response
 
 st.title("Arithmetic Agent Chatbot")
 
