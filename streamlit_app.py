@@ -14,6 +14,7 @@ from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import os
 import streamlit as st
+import pyalex
 
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
@@ -51,6 +52,18 @@ def division(x:int, y:int) -> int :
     It takes two integers as its inputs and the output is an integer.
     """
     return x / y
+
+@tool
+def openAlex(term: str) -> str :
+    """
+    Searches for journal articles and books in the OpenAlex API using a keyword.
+    """
+    response = []
+    if term:
+        response = Works().search(term).get()
+    else:
+        response = "Could not extract search term"
+    return response
 
 st.title("Arithmetic Agent Chatbot")
 
@@ -94,14 +107,12 @@ for message in st.session_state.messages:
 #    print(response.content)
 
 # Tool list
-arithmeticagent_tools = [addition, subtraction, multiplication, division]
+arithmeticagent_tools = [addition, subtraction, multiplication, division, openAlex]
 
 arithmeticagent_system_prompt = SystemMessage(
     """You are a math agent that can solve simple mathematics problems like addition, subtraction, multiplication and division. 
     Solve the mathematics problems provided by the user using only the available tools and not by yourself. Provide the answer given by the tool.  
-    You are also able to take a natural language query and fetch answer from the employees table about employees. 
-    Provide the answer given by the tool.
-    You are also able to take a natural language query and fetch the answer from and index. Provide the answer given by the tool. 
+    You are also able to take a natural language query and fetch and return a list of relevant research articles from the OpenAlex API.
     """
 )
 
