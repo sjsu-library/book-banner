@@ -2,7 +2,6 @@ langchain_core
 langchain-openai
 langchain-google-genai
 langgraph-prebuilt
-langchain_core-messages
 os
 getandrun_query
 pc_query
