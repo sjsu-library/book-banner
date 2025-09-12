@@ -9,6 +9,7 @@
 # imports
 from langchain_core.tools import tool
 from langchain_openai import AzureChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import os
@@ -80,14 +81,18 @@ st.title("Arithmetic Agent Chatbot")
 # API key and endpoint configuration
 # The preferred and secure approach is to store these in environment variables
 # Do not share code with these values set
-os.environ["AZURE_OPENAI_API_KEY"] = ""
-os.environ["AZURE_OPENAI_ENDPOINT"] = ""
+# os.environ["AZURE_OPENAI_API_KEY"] = ""
+# os.environ["AZURE_OPENAI_ENDPOINT"] = ""
+os.environ["GOOGLE_API_KEY"] = st.secrets.key
 
 # LLM configuration
-model = AzureChatOpenAI(
-    azure_deployment = "gpt-4",
-    api_version = "2025-01-01-preview",
-    model = "gpt-4"
+model = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    temperature=0,
+    max_tokens=None,
+    timeout=None,
+    max_retries=2,
+    # other params...
 )
 
 # Initialize st.session_state with the model
