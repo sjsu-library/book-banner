@@ -22,17 +22,17 @@ import os
 import streamlit as st
 from pyalex import Works
 
-@st.cache_resource(ttl="1d", show_spinner=False)
-def createVectorStore():
-    loader = CSVLoader(file_path="data.csv")
-    data = loader.load()
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vectorstore = Chroma.from_documents(
-                        data,                 # Data
-                        embeddings    # Embedding model
-                        )
-    retriever = vectorstore.as_retriever()
-    return retriever
+# @st.cache_resource(ttl="1d", show_spinner=False)
+# def createVectorStore():
+#    loader = CSVLoader(file_path="data.csv")
+#    data = loader.load()
+#    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+#    vectorstore = Chroma.from_documents(
+#                        data,                 # Data
+#                        embeddings    # Embedding model
+#                        )
+#    retriever = vectorstore.as_retriever()
+#    return retriever
 
 
 # addition tool
@@ -84,13 +84,13 @@ def openAlex(term: str) -> str :
         response = "Could not extract search term"
     return response
 
-@tool
-def localDocs(query:str) -> str :
-    """
-    Searches for inforamtion about SJSU library and returns relevant documents
-    """
-    docs = retriever.invoke(query)
-    return docs
+#@tool
+#def localDocs(query:str) -> str :
+#    """
+#    Searches for inforamtion about SJSU library and returns relevant documents
+#    """
+#    docs = retriever.invoke(query)
+#    return docs
 
 createVectorStore()
 
@@ -136,13 +136,12 @@ for message in st.session_state.messages:
 #    print(response.content)
 
 # Tool list
-arithmeticagent_tools = [addition, subtraction, multiplication, division, openAlex, localDocs]
+arithmeticagent_tools = [addition, subtraction, multiplication, division, openAlex]
 
 arithmeticagent_system_prompt = SystemMessage(
     """You are a math agent that can solve simple mathematics problems like addition, subtraction, multiplication and division. 
     Solve the mathematics problems provided by the user using only the available tools and not by yourself. Provide the answer given by the tool.  
     You are also able to take a natural language query and fetch and return a list of five relevant research articles with links from the OpenAlex API.
-    You are also able to take a natural laanguage query about SJSU library and respond based on documents contained in the local database.
     """
 )
 
