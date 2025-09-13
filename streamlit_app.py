@@ -29,8 +29,8 @@ def createVectorStore():
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     db = Chroma.from_documents(documents, OpenAIEmbeddings())
     vectorstore = Chroma.from_documents(
-                        documents=data,                 # Data
-                        embedding=embeddings,    # Embedding model
+                        data,                 # Data
+                        embeddings    # Embedding model
                         )
     retriever = vectorstore.as_retriever()
     return retriever
