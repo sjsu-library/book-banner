@@ -7,6 +7,9 @@
 # User provides a prompt such as "What is the sum of 1 and 2?" or "add 1 and 2" or "1 + 2" and "What is the product of 1 and 2?"
 # The agent uses an LLM to decide which tool to execute and then executes it with the inputs and returns the results
 # imports
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from langchain_core.tools import tool
 from langchain_openai import AzureChatOpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
