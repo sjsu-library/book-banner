@@ -32,8 +32,8 @@ def createVectorStore():
                         documents=data,                 # Data
                         embedding=embeddings,    # Embedding model
                         )
-    return vectorstore
-    #retriever = vectorstore.as_retriever()
+    retriever = vectorstore.as_retriever()
+    return retriever
 
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
@@ -89,7 +89,7 @@ def localDocs(query:str) -> str :
     """
     Searches for inforamtion about SJSU library and returns relevant documents
     """
-    docs = vectorstore.similarity_search(query, k=4) # k specifies the number of documents to return
+    docs = retriever.invoke(query)
     return docs
 
 st.title("Arithmetic Agent Chatbot")
