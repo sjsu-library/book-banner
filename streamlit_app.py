@@ -10,9 +10,11 @@
 from langchain_core.tools import tool
 from langchain_openai import AzureChatOpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain_chroma import Chroma
 import os
 import streamlit as st
 from pyalex import Works
@@ -20,6 +22,13 @@ from pyalex import Works
 @st.cache_resource(ttl="1d", show_spinner=False)
 loader = CSVLoader(file_path="data.csv")
 data = loader.load()
+embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+db = Chroma.from_documents(documents, OpenAIEmbeddings())
+vectorstore = Chroma.from_documents(
+                     documents=data,                 # Data
+                     embedding=embeddings,    # Embedding model
+                     )
+retriever = vectorstore.as_retriever()
 
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
