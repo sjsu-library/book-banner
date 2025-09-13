@@ -17,7 +17,6 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_community.document_loaders.csv_loader import CSVLoader
-from langchain_chroma import Chroma
 import os
 import streamlit as st
 from pyalex import Works
