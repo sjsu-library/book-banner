@@ -12,9 +12,14 @@ from langchain_openai import AzureChatOpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from langchain_community.document_loaders.csv_loader import CSVLoader
 import os
 import streamlit as st
 from pyalex import Works
+
+@st.cache_resource(ttl="1d", show_spinner=False)
+loader = CSVLoader(file_path="data.csv")
+data = loader.load()
 
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
