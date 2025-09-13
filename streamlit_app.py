@@ -28,7 +28,7 @@ vectorstore = Chroma.from_documents(
                      documents=data,                 # Data
                      embedding=embeddings,    # Embedding model
                      )
-retriever = vectorstore.as_retriever()
+#retriever = vectorstore.as_retriever()
 
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
@@ -79,6 +79,14 @@ def openAlex(term: str) -> str :
         response = "Could not extract search term"
     return response
 
+@tool
+def localDocs(query:str) -> str :
+    """
+    Searches for inforamtion about SJSU library and returns relevant documents
+    """
+    docs = vectorstore.similarity_search(query, k=4) # k specifies the number of documents to return
+    return docs
+
 st.title("Arithmetic Agent Chatbot")
 
 # API key and endpoint configuration
@@ -121,12 +129,13 @@ for message in st.session_state.messages:
 #    print(response.content)
 
 # Tool list
-arithmeticagent_tools = [addition, subtraction, multiplication, division, openAlex]
+arithmeticagent_tools = [addition, subtraction, multiplication, division, openAlex, localDocs]
 
 arithmeticagent_system_prompt = SystemMessage(
     """You are a math agent that can solve simple mathematics problems like addition, subtraction, multiplication and division. 
     Solve the mathematics problems provided by the user using only the available tools and not by yourself. Provide the answer given by the tool.  
     You are also able to take a natural language query and fetch and return a list of five relevant research articles with links from the OpenAlex API.
+    You are also able to take a natural laanguage query about SJSU library and respond based on documents contained in the local database.
     """
 )
 
