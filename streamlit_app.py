@@ -112,7 +112,7 @@ arithmeticagent_tools = [addition, subtraction, multiplication, division, openAl
 arithmeticagent_system_prompt = SystemMessage(
     """You are a math agent that can solve simple mathematics problems like addition, subtraction, multiplication and division. 
     Solve the mathematics problems provided by the user using only the available tools and not by yourself. Provide the answer given by the tool.  
-    You are also able to take a natural language query and fetch and return a list of relevant research articles from the OpenAlex API.
+    You are also able to take a natural language query and fetch and return a list of five relevant research articles from the OpenAlex API.
     """
 )
 
