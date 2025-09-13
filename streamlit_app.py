@@ -92,7 +92,7 @@ def openAlex(term: str) -> str :
 #    docs = retriever.invoke(query)
 #    return docs
 
-createVectorStore()
+#createVectorStore()
 
 st.title("Arithmetic Agent Chatbot")
 
