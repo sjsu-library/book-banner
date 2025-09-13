@@ -35,6 +35,7 @@ def createVectorStore():
     retriever = vectorstore.as_retriever()
     return retriever
 
+
 # addition tool
 @tool    # This identifies the following function as a tool to langgraph
 # in the following statement the function name, the attributes their types and the output type are defined
@@ -91,6 +92,8 @@ def localDocs(query:str) -> str :
     """
     docs = retriever.invoke(query)
     return docs
+
+createVectorStore()
 
 st.title("Arithmetic Agent Chatbot")
 
