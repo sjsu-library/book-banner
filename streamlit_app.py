@@ -27,7 +27,6 @@ def createVectorStore():
     loader = CSVLoader(file_path="data.csv")
     data = loader.load()
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    db = Chroma.from_documents(documents, OpenAIEmbeddings())
     vectorstore = Chroma.from_documents(
                         data,                 # Data
                         embeddings    # Embedding model
