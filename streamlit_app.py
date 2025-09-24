@@ -42,6 +42,7 @@ def googleBooks(term:str) -> str :
     """
     response = []
     if term:
+        client = GoogleBooksAPI()
         books = client.get_books_by_subject(term)
         response = books.get_all_results()[:10]
     else:
@@ -49,7 +50,7 @@ def googleBooks(term:str) -> str :
     return response
 
 
-st.title("Arithmetic Agent Chatbot")
+st.title("AI Powered Book Banner")
 
 # API key and endpoint configuration
 # The preferred and secure approach is to store these in environment variables
