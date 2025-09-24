@@ -30,7 +30,7 @@ def openAlex(term: str) -> str :
     """
     response = []
     if term:
-        response = Works().search(term).get()
+        response = Works().filter("default.search"=term, "type" = "book").get()
     else:
         response = "Could not extract search term"
     return response
@@ -96,7 +96,7 @@ bookbanagent_tools = [openAlex, googleBooks]
 
 bookbanagent_system_prompt = SystemMessage(
     """You are a book banning agent that can identify book and article titles that should be removed from circulation because they violate content restrictions.
-    Identify titles to be banned using only the available tools and not by yourself. Use the response given by the tool to create a list of books to be banned.
+    Identify titles to be banned using only the available tools and not by yourself. Use the response given by the tool to create a list of books to be banned, with links if they are availble.
     """
 )
 
