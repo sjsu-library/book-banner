@@ -41,7 +41,7 @@ def googleBooks(term:str) -> str :
     Searches for books in the Google Books API using a keyword.
     """
     response = []
-    if term
+    if term:
         books = client.get_books_by_subject(term)
         response = books.get_all_results()[:10]
     else:
