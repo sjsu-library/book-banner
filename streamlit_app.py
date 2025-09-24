@@ -96,7 +96,7 @@ bookbanagent_tools = [openAlex, googleBooks]
 
 bookbanagent_system_prompt = SystemMessage(
     """You are a book banning agent that can identify book and article titles that should be removed from circulation because they violate content restrictions.
-    Identify titles to be banned using only the available tools and not by yourself. Provide the answer given by the tool.
+    Identify titles to be banned using only the available tools and not by yourself. Use the response given by the tool to create a list of books to be banned.
     """
 )
 
