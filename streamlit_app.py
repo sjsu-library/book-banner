@@ -100,6 +100,7 @@ bookbanagent_system_prompt = SystemMessage(
     Add a link for each book if one is available.
     For each book add an appropriate emoji that relates to the book's title.
     Do not repeat the same book title more than once.
+    Begin your response by saying these are the books that meet the criteria for banning. Don't mention the emojis in the introduction.
     """
 )
 
