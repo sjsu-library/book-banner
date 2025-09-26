@@ -22,15 +22,6 @@ import requests
 import streamlit as st
 from pyalex import Works
 
-class gbooks():
-    googleapikey = st.secrets.key
-
-    def search(self, value):
-        parms = {"q":value}
-        r = requests.get(url="https://openlibrary.org/search.json", params=parms)
-        return(r.json())
-
-
 @tool
 def openAlex(term: str) -> str :
     """
@@ -44,14 +35,15 @@ def openAlex(term: str) -> str :
     return response
 
 @tool
-def googleBooks(term:str) -> str :
+def openLibrary (term:str) -> str :
     """
     Searches for books in the Google Books API using a keyword.
     """
     response = []
     if term:
-        bk = gbooks()
-        response=bk.search(term)
+        params = {"q":term}
+        r = requests.get(url="https://openlibrary.org/search.json", params=params)
+        response=r.json
     else:
         response = "Could not extract search term"
     return response
@@ -99,7 +91,7 @@ for message in st.session_state.messages:
 #    print(response.content)
 
 # Tool list
-bookbanagent_tools = [openAlex, googleBooks]
+bookbanagent_tools = [openAlex, openLibrary]
 
 bookbanagent_system_prompt = SystemMessage(
     """You are a book banning agent that can identify book and article titles that should be removed from circulation because they violate content restrictions.
