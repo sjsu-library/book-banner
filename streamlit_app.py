@@ -18,9 +18,17 @@ from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_community.document_loaders.csv_loader import CSVLoader
 import os
+import requests
 import streamlit as st
 from pyalex import Works
-from google_books_api_wrapper.api import GoogleBooksAPI
+
+class gbooks():
+    googleapikey = st.secrets.key
+
+    def search(self, value):
+        parms = {"q":value, 'key':self.googleapikey}
+        r = requests.get(url="https://www.googleapis.com/books/v1/volumes", params=parms)
+        return(r.json())
 
 
 @tool
@@ -42,9 +50,8 @@ def googleBooks(term:str) -> str :
     """
     response = []
     if term:
-        client = GoogleBooksAPI()
-        books = client.get_books_by_subject(term)
-        response = books.get_all_results()[:10]
+        bk = gbooks()
+        response=bk.search(term)
     else:
         response = "Could not extract search term"
     return response
