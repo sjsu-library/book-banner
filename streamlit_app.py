@@ -49,7 +49,7 @@ def openLibrary (term:str) -> str :
     return response
 
 
-st.title("AI Powered Book Banner")
+st.title("AI-Powered Book Banner ✨")
 
 # API key and endpoint configuration
 # The preferred and secure approach is to store these in environment variables
