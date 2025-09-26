@@ -41,7 +41,7 @@ def openLibrary (term:str) -> str :
     """
     response = []
     if term:
-        params = {"q":term}
+        params = {"q":term, 'sort':'new'}
         r = requests.get(url="https://openlibrary.org/search.json", params=params)
         response = r.json()
     else:
