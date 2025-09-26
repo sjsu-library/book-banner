@@ -25,7 +25,7 @@ from pyalex import Works
 @tool
 def openAlex(term: str) -> str :
     """
-    Searches for journal articles and books in the OpenAlex API using a keyword.
+    Searches for academic books in the OpenAlex API using a keyword.
     """
     response = []
     if term:
