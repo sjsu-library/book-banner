@@ -26,7 +26,7 @@ class gbooks():
     googleapikey = st.secrets.key
 
     def search(self, value):
-        parms = {"q":value, 'key':self.googleapikey}
+        parms = {"q":value, 'key':self.googleapikey, 'country':'US'}
         r = requests.get(url="https://www.googleapis.com/books/v1/volumes", params=parms)
         return(r.json())
 
