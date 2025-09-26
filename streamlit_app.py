@@ -30,7 +30,7 @@ def openAlex(term: str) -> str :
     """
     response = []
     if term:
-        response = Works().search(term.filter(type="book").get()
+        response = Works().search(term).filter(type="book").get()
     else:
         response = "Could not extract search term"
     return response
