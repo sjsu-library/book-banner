@@ -111,7 +111,7 @@ bookbanagent_graph = create_react_agent(
 
 detailed_yn = True
 detailed_yn = st.checkbox("Detailed output")
-if prompt := st.chat_input("Enter a simple mathematics question"): # if input has a value
+if prompt := st.chat_input("Enter criteria for book banning"): # if input has a value
     with st.chat_message("user"):         # set the role as user
         st.markdown(prompt)               # display the message
 
