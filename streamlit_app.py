@@ -108,8 +108,8 @@ bookbanagent_system_prompt = SystemMessage(
     """
 )
 
-debug_yn = True
-debug_yn = st.checkbox("Debug")
+debug_yn = False
+#debug_yn = st.checkbox("Debug")
 bookbanagent_graph = create_react_agent(
     model = model,
     state_modifier = bookbanagent_system_prompt,
@@ -117,7 +117,7 @@ bookbanagent_graph = create_react_agent(
     debug = debug_yn)
 
 
-detailed_yn = True
+detailed_yn = False
 detailed_yn = st.checkbox("Detailed output")
 if prompt := st.chat_input("Enter criteria for book banning"): # if input has a value
     with st.chat_message("user"):         # set the role as user
