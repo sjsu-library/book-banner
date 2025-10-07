@@ -97,6 +97,7 @@ bookbanagent_system_prompt = SystemMessage(
     """
     You are a book banning agent that can identify book itles that should be removed from circulation because they violate content restrictions.
     Identify titles to be banned using only the available tools and not by yourself. 
+    If you are not able to identify titles, ask follow up questions to find out the criteria for banning.
     Add a link for each book if one is available.
     For each book add an appropriate emoji that relates to the book's title.
     Do not repeat the same book title more than once.
