@@ -60,7 +60,7 @@ os.environ["GOOGLE_API_KEY"] = st.secrets.key
 
 # LLM configuration
 model = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash-lite",
+    model="gemini-3.1-flash-lite",
     temperature=0,
     max_tokens=None,
     timeout=None,
