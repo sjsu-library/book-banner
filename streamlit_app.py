@@ -11,7 +11,7 @@ from pyalex import Works
 
 # Configure API key
 os.environ["GOOGLE_API_KEY"] = st.secrets.key
-
+pyalex.config.api_key = st.secrets.pyalex_key
 
 @tool
 def openAlex(term: str) -> str:
