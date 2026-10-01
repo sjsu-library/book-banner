@@ -102,8 +102,8 @@ if prompt := st.chat_input("Enter criteria for book banning"):
             {"messages": [("user", prompt)]}
         )
 
-        final_message = result["messages"][-1].content[0]["text"]
-        response = final_message.content
+        final_message = result["messages"][-1]
+        response = final_message.content[0]["text"]
 
 
     if detailed_output:
