@@ -6,6 +6,7 @@ import streamlit as st
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
+import pyalex
 from pyalex import Works
 
 
