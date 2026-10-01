@@ -105,10 +105,7 @@ if prompt := st.chat_input("Enter criteria for book banning"):
         final_message = result["messages"][-1]
         content = final_message.content
 
-        if isinstance(content, list) and content:
-            response = content[0].get("text", "")
-        else:
-            response = str(content)
+        response = content[0].get("text", "")
 
         response = response.replace("\u00a0", " ")
 
