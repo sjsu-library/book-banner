@@ -103,16 +103,22 @@ if prompt := st.chat_input("Enter criteria for book banning"):
         )
 
         final_message = result["messages"][-1]
-        response = final_message.content[0]["text"]
+        content = final_message.content
 
+        if isinstance(content, list) and content:
+            response = content[0].get("text", "")
+        else:
+            response = str(content)
 
-    if detailed_output:
-        response += "\n\n### Detailed execution flow\n"
-        for message in result["messages"]:
-            response += f"\n{message.pretty_repr()}\n"
+        response = response.replace("\u00a0", " ")
 
-    st.markdown(response)
+        st.markdown(response)
 
+        if detailed_output:
+            st.markdown("### Detailed execution flow")
+
+            for message in result["messages"]:
+                st.code(message.pretty_repr())
 
     st.session_state.messages.append(
         {"role": "assistant", "content": response}
