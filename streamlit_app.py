@@ -10,7 +10,7 @@ from pyalex import Works
 
 
 # Configure API key
-os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+os.environ["GOOGLE_API_KEY"] = st.secrets.key
 
 
 @tool
