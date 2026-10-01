@@ -102,20 +102,9 @@ if prompt := st.chat_input("Enter criteria for book banning"):
             {"messages": [("user", prompt)]}
         )
 
-        final_message = result["messages"][-1]
+        final_message = result["messages"][-1].content[0]["text"]
         response = final_message.content
 
-        final_message = result["messages"][-1]
-        content = final_message.content
-
-    if isinstance(content, list):
-        response = "\n".join(
-            block["text"]
-            for block in content
-            if isinstance(block, dict) and "text" in block
-        )
-    else:
-        response = str(content)
 
     if detailed_output:
         response += "\n\n### Detailed execution flow\n"
