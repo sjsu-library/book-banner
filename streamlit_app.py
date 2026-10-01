@@ -67,7 +67,7 @@ For each result:
 - Return no more than 20 books.
 
 Begin the response by saying:
-"These are the books that meet the criteria for banning:"
+"These are the books or articles that meet the criteria for banning:"
 """
 
 
